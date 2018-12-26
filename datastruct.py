@@ -28,3 +28,27 @@ class ChildrenNode():
 
     def __repr__(self):
         return str(self.val)
+
+
+class PriorityMinQueue():
+    def __init__(self):
+        self._queue = []
+
+    def enqueue(self, priority, data):
+        self._queue.append((priority, data))
+
+    # def dequeue(self):
+    #     min_index, min_p = 0, self._queue[0][0]
+    #
+    #     for i, el in enumerate(self._queue):
+    #         if el[0] <= min_p:
+    #             min_index, min_p = i, self._queue[i][0]
+    #
+    #     return self._queue.pop(min_index)
+
+    def dequeue(self):
+        if len(self._queue) == 0:
+            return None
+
+        (min_p, i) = min((el[0], i) for i, el in enumerate(self._queue))
+        return self._queue.pop(i)
